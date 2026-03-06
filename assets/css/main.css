@@ -1,0 +1,274 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  background: #ffffff;
+}
+#page-content {
+  flex: 1 0 auto;
+}
+.container {
+  width: 1440px;
+  margin: 0 auto;
+  padding: 0 120px;
+  box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+  height: 67px;
+  background: #a1a1a1;
+  display: flex;
+  align-items: center;
+}
+
+.header-logo {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.section-articles {
+  width: 100%;
+  padding-top: 150px;
+  box-sizing: border-box;
+}
+
+.section-title {
+  margin-bottom: 46px;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.articles-grid {
+  display: flex;
+  gap: 13px;
+}
+
+.article-card {
+  width: 391px;
+  height: 365px;
+  background: #ffffff;
+  border-radius: 1.69px;
+  display: flex;
+  flex-direction: column;
+}
+
+.article-card img {
+  width: 391px;
+  height: 185px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  object-fit: cover;
+}
+
+.article-body h3 {
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.post-date {
+  margin-top: auto;
+  color: #a1a1a1;
+  font-size: 14px;
+}
+
+.section-services {
+  width: 100%;
+  padding-top: 150px;
+  padding-bottom: 64px;
+  margin-top: 64px;
+}
+
+.services-grid {
+  display: flex;
+  gap: 20px;
+}
+
+.service-card {
+  width: 285px;
+  height: 365px;
+  border: 1px solid #e6e6e6;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card img {
+  width: 285px;
+  height: 185px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.service-info {
+  padding: 0 20px 20px 20px;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.service-info h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.service-price {
+  width: 86px;
+  height: 24px;
+  color: #a1a1a1;
+  font-size: 16px;
+  opacity: 1;
+  margin-top: auto;
+}
+
+.badge-container {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+}
+
+.badge {
+  background: #ffffff;
+  padding: 4px 12px;
+  border-radius: 40px;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+}
+
+.footer {
+  width: 100%;
+  height: 330px;
+  background: #e6e6e6;
+  opacity: 1;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.footer-logo {
+  width: 245px;
+  height: 19px;
+  position: absolute;
+  top: 64px;
+  left: 120px;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    max-width: 360px;
+    padding: 0 20px;
+  }
+
+  .header {
+    height: 50px;
+  }
+
+  .header-logo {
+    margin-left: 0;
+  }
+
+  .section-articles {
+    padding-top: 50px;
+  }
+
+  .articles-grid {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .article-card {
+    width: 100%;
+    height: auto;
+  }
+
+  .article-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .services-grid {
+    overflow-x: auto;
+    padding-bottom: 20px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .service-card {
+    min-width: 285px;
+    scroll-snap-align: start;
+  }
+
+  .mobile-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    background: #d9d9d9;
+    border-radius: 50%;
+  }
+  .dot.active {
+    background: #000;
+  }
+}
+
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+}
+.form-grid input,
+.form-grid textarea {
+  padding: 15px;
+  border: 1px solid #e6e6e6;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: inherit;
+}
+.form-grid textarea {
+  height: 150px;
+}
+.btn-submit {
+  width: 200px;
+  height: 50px;
+  background: #fff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.btn-submit:hover {
+  background: #333;
+}
+.success-msg {
+  color: green;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.article-card a,
+.service-card a {
+  text-decoration: none;
+  color: inherit;
+}
