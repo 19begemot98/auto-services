@@ -14,19 +14,19 @@
                             <?php if (has_post_thumbnail()):
                                 the_post_thumbnail('large');
                             else:
-                                echo '<img src="' . get_template_directory_uri() . '/assets/images/Articles.jpg">';
+                                echo '<img src="https://placehold.co/600x400?text=No+Image" alt="Нет фото">';
                             endif; ?>
                         </a>
                         <div class="article-body">
                             <h3>
-                                <a href="<?php the_permalink(); ?>" style="text-decoration: none; color: inherit;">
+                                <a href="<?php the_permalink(); ?>" class="card-link">
                                     <?php the_title(); ?>
                                 </a>
                             </h3>
                             <p>
                                 <?php echo wp_trim_words(get_the_excerpt(), 15); ?>
                             </p>
-                            <time class="post-date">26.11.2023</time>
+                            <time class="post-date"><?php echo get_the_date('d.m.Y'); ?></time>
                         </div>
                     </article>
                 <?php endwhile; endif;
@@ -69,13 +69,13 @@
                             <?php if (has_post_thumbnail()):
                                 the_post_thumbnail('medium');
                             else:
-                                echo '<img src="' . get_template_directory_uri() . '/assets/images/Services.jpg">';
+                                echo '<img src="https://placehold.co/600x400?text=No+Image" alt="Нет фото">';
                             endif; ?>
                         </a>
 
                         <div class="service-info">
                             <h3>
-                                <a href="<?php the_permalink(); ?>" style="text-decoration: none; color: inherit;">
+                                <a href="<?php the_permalink(); ?>" class="card-link">
                                     <?php the_title(); ?>
                                 </a>
                             </h3>
@@ -97,27 +97,20 @@
     </div>
 </section>
 
-<section id="contact-form" style="padding: 100px 0; background: #f9f9f9;">
+<section id="contact-form" class="section-contact">
     <div class="container">
         <h2 class="section-title">Связаться с нами</h2>
 
         <?php if (isset($_GET['status']) && $_GET['status'] == 'success'): ?>
-            <p style="color: green; font-weight: bold; margin-bottom: 20px;">Ваше сообщение успешно отправлено и сохранено в
-                базе!</p>
+            <p class="success-message">Ваше сообщение успешно отправлено и сохранено</p>
         <?php endif; ?>
 
-        <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="post"
-            style="max-width: 500px; display: flex; flex-direction: column; gap: 15px;">
+        <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="post" class="form-grid-layout">
             <input type="hidden" name="action" value="contact_form">
-            <input type="text" name="user_name" placeholder="Ваше имя" required
-                style="padding: 12px; border: 1px solid #ddd; border-radius: 4px;">
-            <input type="email" name="user_email" placeholder="Ваш Email" required
-                style="padding: 12px; border: 1px solid #ddd; border-radius: 4px;">
-            <textarea name="user_message" placeholder="Текст сообщения" required
-                style="padding: 12px; border: 1px solid #ddd; border-radius: 4px; height: 100px;"></textarea>
-            <button type="submit" name="contact_submit"
-                style="background: #a1a1a1; color: #fff; padding: 15px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">ОТПРАВИТЬ
-                ЗАЯВКУ</button>
+            <input type="text" name="user_name" placeholder="Ваше имя" required class="input-field">
+            <input type="email" name="user_email" placeholder="Ваш Email" required class="input-field">
+            <textarea name="user_message" placeholder="Текст сообщения" required class="textarea-field"></textarea>
+            <button type="submit" name="contact_submit" class="submit-button">ОТПРАВИТЬ ЗАЯВКУ</button>
         </form>
     </div>
 </section>

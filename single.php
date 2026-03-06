@@ -1,25 +1,25 @@
 <?php get_header(); ?>
 
 <div id="page-content">
-    <div class="container" style="padding-top: 150px; padding-bottom: 150px;">
+    <div class="container single-page-container">
         <?php while (have_posts()):
             the_post(); ?>
             <article class="single-entry">
-                <h1 class="section-title" style="margin-left: 0;">
+                <h1 class="section-title single-title">
                     <?php the_title(); ?>
                 </h1>
 
-                <div class="entry-image" style="margin-bottom: 30px;">
+                <div class="entry-image">
                     <?php if (has_post_thumbnail()):
-                        the_post_thumbnail('full', ['style' => 'width:100%; height:auto; border-radius:10px;']); endif; ?>
+                        the_post_thumbnail('full', ['class' => 'responsive-thumb']);
+                    endif; ?>
                 </div>
 
-                <div class="entry-content" style="font-size: 18px; line-height: 1.6;">
+                <div class="entry-content">
                     <?php the_content(); ?>
                 </div>
 
-                <a href="<?php echo home_url(); ?>" style="margin-top: 50px; display: inline-block; color: #a1a1a1;">←
-                    Назад</a>
+                <a href="<?php echo home_url(); ?>" class="back-link">← Назад</a>
             </article>
         <?php endwhile; ?>
     </div>
