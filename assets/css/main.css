@@ -216,68 +216,6 @@ body {
 .submit-button:hover {
   background: #333;
 }
-@media (max-width: 768px) {
-  .container {
-    width: 100%;
-    max-width: 360px;
-    padding: 0 20px;
-  }
-
-  .header {
-    height: 50px;
-  }
-
-  .header-logo {
-    margin-left: 0;
-  }
-
-  .section-articles {
-    padding-top: 50px;
-  }
-
-  .articles-grid {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .article-card {
-    width: 100%;
-    height: auto;
-  }
-
-  .article-card img {
-    width: 100%;
-    height: auto;
-  }
-
-  .services-grid {
-    overflow-x: auto;
-    padding-bottom: 20px;
-    scroll-snap-type: x mandatory;
-  }
-
-  .service-card {
-    min-width: 285px;
-    scroll-snap-align: start;
-  }
-
-  .mobile-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 20px;
-  }
-
-  .dot {
-    width: 8px;
-    height: 8px;
-    background: #d9d9d9;
-    border-radius: 50%;
-  }
-  .dot.active {
-    background: #000;
-  }
-}
 
 .form-grid {
   display: flex;
@@ -402,4 +340,95 @@ body {
 
 .back-link:hover {
   color: #333;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
+  .header {
+    height: 50px;
+  }
+
+  .header-logo {
+    margin-left: 0;
+  }
+
+  .section-articles {
+    padding-top: 50px;
+  }
+
+  .articles-grid {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .article-card {
+    width: 100%;
+    height: auto;
+  }
+
+  .article-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .services-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding-bottom: 20px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .services-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .service-card {
+    flex: 0 0 285px !important;
+    min-width: 285px;
+    scroll-snap-align: start;
+  }
+
+  .service-card img {
+    width: 100%;
+    height: 185px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .mobile-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    background: #d9d9d9;
+    border-radius: 50%;
+    cursor: pointer;
+    touch-action: manipulation;
+    position: relative;
+    z-index: 10;
+  }
+  .dot.active {
+    background: #000;
+  }
+  .article-card img,
+  .service-card img {
+    width: 100% !important;
+    height: 185px !important;
+    display: block !important;
+    object-fit: cover !important;
+  }
 }

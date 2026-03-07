@@ -1,8 +1,8 @@
 <?php
 function auto_service_assets()
 {
-    wp_enqueue_style('main-style', get_template_directory_uri() . '/assets/css/main.css', array(), '1.6');
-    wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0', true);
+    wp_enqueue_style('main-style', get_template_directory_uri() . '/assets/css/main.css', array(), '1.7');
+    wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', array(), time(), true);
 }
 add_action('wp_enqueue_scripts', 'auto_service_assets');
 
@@ -64,3 +64,30 @@ function handle_contact_form()
 }
 add_action('admin_post_nopriv_contact_form', 'handle_contact_form');
 add_action('admin_post_contact_form', 'handle_contact_form');
+
+function fix_ssl_attachment_url($url)
+{
+    if (is_ssl()) {
+        $url = str_replace('http://', 'https://', $url);
+    }
+    return $url;
+}
+add_filter('wp_get_attachment_url', 'fix_ssl_attachment_url');
+add_filter('wp_calculate_image_srcset', function ($sources) {
+    foreach ($sources as &$source) {
+        if (is_ssl()) {
+            $source['url'] = str_replace('http://', 'https://', $source['url']);
+        }
+    }
+    return $sources;
+});
+add_filter('wp_lazy_loading_enabled', '__return_false');
+
+add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10);
+add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10);
+
+function remove_thumbnail_dimensions($html)
+{
+    $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html);
+    return $html;
+}

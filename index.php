@@ -26,10 +26,13 @@
                             <p>
                                 <?php echo wp_trim_words(get_the_excerpt(), 15); ?>
                             </p>
-                            <time class="post-date"><?php echo get_the_date('d.m.Y'); ?></time>
+                            <time class="post-date">
+                                <?php echo get_the_date('d.m.Y'); ?>
+                            </time>
                         </div>
                     </article>
-                <?php endwhile; endif;
+                <?php endwhile;
+            endif;
             wp_reset_postdata(); ?>
         </div>
     </div>
@@ -38,20 +41,21 @@
 <section class="section-services">
     <div class="container">
         <h2 class="section-title">Услуги</h2>
-        <div class="services-grid">
-            <?php
-            $services = new WP_Query(['post_type' => 'services', 'posts_per_page' => 4]);
-            $counter = 0;
-            $badges = [
-                0 => ['Товар месяца'],
-                1 => ['Скидка', 'Акция'],
-                2 => ['Новинка'],
-                3 => ['Товар месяца']
-            ];
-            $prices = ['200', '800', '400', '200'];
 
-            if ($services->have_posts()):
-                while ($services->have_posts()):
+        <?php
+        $services = new WP_Query(['post_type' => 'services', 'posts_per_page' => 4]);
+        $counter = 0;
+        $badges = [
+            0 => ['Товар месяца'],
+            1 => ['Скидка', 'Акция'],
+            2 => ['Новинка'],
+            3 => ['Товар месяца']
+        ];
+        $prices = ['200', '800', '400', '200'];
+
+        if ($services->have_posts()): ?>
+            <div class="services-grid js-services-slider">
+                <?php while ($services->have_posts()):
                     $services->the_post();
                     $current_badges = $badges[$counter] ?? [];
                     $current_price = $prices[$counter] ?? '200';
@@ -84,16 +88,18 @@
                             </p>
                         </div>
                     </div>
-                    <?php $counter++; endwhile; endif;
-            wp_reset_postdata(); ?>
-        </div>
+                    <?php $counter++; endwhile; ?>
+            </div>
 
-        <div class="mobile-dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-        </div>
+            <div class="mobile-dots">
+                <?php for ($i = 0; $i < $services->post_count; $i++): ?>
+                    <span class="dot <?php echo $i === 0 ? 'active' : ''; ?>" data-index="<?php echo $i; ?>"></span>
+                <?php endfor; ?>
+            </div>
+
+        <?php
+        endif;
+        wp_reset_postdata(); ?>
     </div>
 </section>
 
